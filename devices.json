@@ -1,0 +1,330 @@
+{
+  "devices": [
+    {
+      "num": "1",
+      "serial": "32140005",
+      "model": "TR-72wf",
+      "name": "Nagaimo",
+      "battery": "5",
+      "rssi": "",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "60",
+      "unixtime": "1617526828",
+      "channel": [
+        {
+          "num": "1",
+          "name": "Temp",
+          "value": "13.8",
+          "unit": "C"
+        },
+        {
+          "num": "2",
+          "name": "Humi",
+          "value": "69",
+          "unit": "%"
+        }
+      ],
+      "baseunit": {
+        "serial": "32140005",
+        "model": "TR-72wf",
+        "name": "Nagaimo"
+      },
+      "group": {
+        "num": "0",
+        "name": "Maruyama"
+      }
+    },
+    {
+      "num": "1",
+      "serial": "3F36100B",
+      "model": "TR-72wb",
+      "name": "子供部屋",
+      "battery": "1",
+      "rssi": "",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "60",
+      "unixtime": "1617526965",
+      "channel": [
+        {
+          "num": "1",
+          "name": "温度",
+          "value": "19.7",
+          "unit": "C"
+        },
+        {
+          "num": "2",
+          "name": "湿度",
+          "value": "51",
+          "unit": "%"
+        }
+      ],
+      "baseunit": {
+        "serial": "3F36100B",
+        "model": "TR-72wb",
+        "name": "子供部屋"
+      },
+      "group": {
+        "num": "0",
+        "name": "Home"
+      }
+    },
+    {
+      "num": "1",
+      "serial": "52340BB5",
+      "model": "TR-71wb",
+      "name": "蓄熱の上 TR7",
+      "battery": "1",
+      "rssi": "",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "0",
+      "unixtime": "1617520800",
+      "channel": [
+        {
+          "num": "1",
+          "name": "temp",
+          "value": "26.4",
+          "unit": "C"
+        },
+        {
+          "num": "2",
+          "name": "Ch.2",
+          "value": "Sensor Error",
+          "unit": "C"
+        }
+      ],
+      "baseunit": {
+        "serial": "52340BB5",
+        "model": "TR-71wb",
+        "name": "蓄熱の上 TR7"
+      },
+      "group": {
+        "num": "0",
+        "name": "Home"
+      }
+    },
+    {
+      "num": "1",
+      "serial": "5236184E",
+      "model": "TR-72wb",
+      "name": "Living TR-72wb",
+      "battery": "1",
+      "rssi": "",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "0",
+      "unixtime": "1617520203",
+      "channel": [
+        {
+          "num": "1",
+          "name": "temp",
+          "value": "23.9",
+          "unit": "C"
+        },
+        {
+          "num": "2",
+          "name": "humidity",
+          "value": "43",
+          "unit": "%"
+        }
+      ],
+      "baseunit": {
+        "serial": "5236184E",
+        "model": "TR-72wb",
+        "name": "Living TR-72wb"
+      },
+      "group": {
+        "num": "0",
+        "name": "Home"
+      }
+    },
+    {
+      "num": "1",
+      "serial": "5236264D",
+      "model": "TR-72wb",
+      "name": "2F",
+      "battery": "5",
+      "rssi": "",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "0",
+      "unixtime": "1617523188",
+      "channel": [
+        {
+          "num": "1",
+          "name": "temp",
+          "value": "23.6",
+          "unit": "C"
+        },
+        {
+          "num": "2",
+          "name": "humidity",
+          "value": "41",
+          "unit": "%"
+        }
+      ],
+      "baseunit": {
+        "serial": "5236264D",
+        "model": "TR-72wb",
+        "name": "2F"
+      },
+      "group": {
+        "num": "0",
+        "name": "Home"
+      }
+    },
+    {
+      "num": "1",
+      "serial": "582C0D89",
+      "model": "TR41",
+      "name": "X-Trail",
+      "battery": "5",
+      "rssi": "",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "0",
+      "unixtime": "1617428258",
+      "channel": [
+        {
+          "num": "1",
+          "name": "Temp",
+          "value": "32.4",
+          "unit": "C"
+        }
+      ],
+      "baseunit": {
+        "serial": "582C0D89",
+        "model": "TR41",
+        "name": "X-Trail"
+      },
+      "group": {
+        "num": "0",
+        "name": ""
+      }
+    },
+    {
+      "num": "2",
+      "serial": "5282036C",
+      "model": "RTR502B",
+      "name": "玄関",
+      "battery": "5",
+      "rssi": "5",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "0",
+      "unixtime": "1617526993",
+      "channel": [
+        {
+          "num": "1",
+          "name": "",
+          "value": "20.8",
+          "unit": "C"
+        }
+      ],
+      "baseunit": {
+        "serial": "5858001E",
+        "model": "RTR500BW",
+        "name": "k28home"
+      },
+      "group": {
+        "num": "1",
+        "name": "1F"
+      }
+    },
+    {
+      "num": "3",
+      "serial": "52C7000A",
+      "model": "RTR507B",
+      "name": "2F洗面所",
+      "battery": "5",
+      "rssi": "5",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "0",
+      "unixtime": "1617527503",
+      "channel": [
+        {
+          "num": "1",
+          "name": "",
+          "value": "23.0",
+          "unit": "C"
+        },
+        {
+          "num": "2",
+          "name": "",
+          "value": "44.3",
+          "unit": "%"
+        }
+      ],
+      "baseunit": {
+        "serial": "5858001E",
+        "model": "RTR500BW",
+        "name": "k28home"
+      },
+      "group": {
+        "num": "1",
+        "name": "2F"
+      }
+    },
+    {
+      "num": "1",
+      "serial": "52800010",
+      "model": "RTR501B",
+      "name": "外気",
+      "battery": "5",
+      "rssi": "5",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "0",
+      "unixtime": "1617527147",
+      "channel": [
+        {
+          "num": "1",
+          "name": "",
+          "value": "13.3",
+          "unit": "C"
+        }
+      ],
+      "baseunit": {
+        "serial": "5858001E",
+        "model": "RTR500BW",
+        "name": "k28home"
+      },
+      "group": {
+        "num": "1",
+        "name": "Group1"
+      }
+    },
+    {
+      "num": "4",
+      "serial": "52C30078",
+      "model": "RTR505B-V",
+      "name": "消費電力",
+      "battery": "5",
+      "rssi": "5",
+      "time_diff": "540",
+      "std_bias": "0",
+      "dst_bias": "0",
+      "unixtime": "1617526799",
+      "channel": [
+        {
+          "num": "1",
+          "name": "",
+          "value": "1.45760",
+          "unit": "kWh"
+        }
+      ],
+      "baseunit": {
+        "serial": "5858001E",
+        "model": "RTR500BW",
+        "name": "k28home"
+      },
+      "group": {
+        "num": "1",
+        "name": "Group1"
+      }
+    }
+  ]
+}
