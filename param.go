@@ -1,7 +1,10 @@
 package ondotori
 
+import "strings"
+
 type makeParam interface {
 	MakeJsonMap(baseParam BaseParam) map[string]interface{}
+	MakeUri(baseParam BaseParam) string
 }
 
 type BaseParam struct {
@@ -21,6 +24,14 @@ func (param BaseParam) AddParams(src map[string]interface{}) {
 	src["login-pass"] = param.LoginPass
 }
 
+func (param BaseParam) GetBaseURI() string {
+	id := param.LoginId
+	if strings.HasPrefix(id, "td") || strings.HasPrefix(id, "rd") {
+		return "https://api.webstorage-service.com/v1/devices/"
+	}
+	return "https://api.webstorage.jp/v1/devices/"
+}
+
 func (param CurrentParam) MakeJsonMap(baseParam BaseParam) map[string]interface{} {
 	p := make(map[string]interface{})
 
@@ -35,4 +46,9 @@ func (param CurrentParam) MakeJsonMap(baseParam BaseParam) map[string]interface{
 	}
 
 	return p
+}
+
+func (param CurrentParam) MakeUri(baseParam BaseParam) string {
+	u := baseParam.GetBaseURI()
+	return u + "current"
 }

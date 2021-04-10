@@ -20,7 +20,6 @@ func main() {
 }
 
 func do_access_ondotori() {
-	fmt.Println("Hello World")
 
 	raw, err := ioutil.ReadFile("/var/tmp/webstorage.json")
 	if err != nil {
@@ -29,8 +28,6 @@ func do_access_ondotori() {
 
 	var ac AccessInfo
 	json.Unmarshal(raw, &ac)
-
-	fmt.Println(ac.Token)
 
 	client, err := ondotori.New(ac.Token, ac.Id, ac.Pass)
 	if err != nil {

@@ -62,7 +62,8 @@ func (client *Client) Get(param makeParam, ctx context.Context) (*Devices, error
 		return nil, err
 	}
 	// fmt.Println("Request :", string(jsonReq))
-	req, err := http.NewRequest(http.MethodPost, "https://api.webstorage.jp/v1/devices/current", bytes.NewBuffer([]byte(string(jsonReq))))
+	u := param.MakeUri(client.baseParam)
+	req, err := http.NewRequest(http.MethodPost, u, bytes.NewBuffer([]byte(string(jsonReq))))
 	if err != nil {
 		return nil, err
 	}

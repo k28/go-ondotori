@@ -19,6 +19,14 @@ func makeTestBaseParam() BaseParam {
 	}
 }
 
+func makeTestBaseParamWithId(id string) BaseParam {
+	return BaseParam{
+		Token:     "token123",
+		LoginId:   id,
+		LoginPass: "pass123",
+	}
+}
+
 func TestAddParams(t *testing.T) {
 	cp := &BaseParam{
 		Token:     "token123",
@@ -74,4 +82,38 @@ func TestCurrentParams3(t *testing.T) {
 	testMapExpect(t, "token123", r["api-key"])
 	testMapExpect(t, []string{"baseserial"}, r["base-serial"])
 	testMapExpect(t, nil, r["remote-serial"])
+}
+
+func TestGetBaseUri(t *testing.T) {
+	testBaseUrl(t, "tbac1234", true)
+	testBaseUrl(t, "ondotori", true)
+	testBaseUrl(t, "rbxx1234", true)
+	testBaseUrl(t, "tdxx1234", false)
+	testBaseUrl(t, "rdxx1234", false)
+}
+
+func testBaseUrl(t *testing.T, id string, isJapan bool) {
+	b := makeTestBaseParamWithId(id)
+	u := b.GetBaseURI()
+	var expect = "https://api.webstorage.jp/v1/devices/"
+	if !isJapan {
+		expect = "https://api.webstorage-service.com/v1/devices/"
+	}
+
+	if u != expect {
+		t.Fatal("expect [", expect, "] but [", u, "] id:[", id, "]")
+	}
+}
+
+func TestMakeUri(t *testing.T) {
+	b := makeTestBaseParam()
+
+	p := CurrentParam{
+		RemoteSerial: []string{},
+		BaseSerial:   []string{},
+	}
+
+	if p.MakeUri(b) != "https://api.webstorage.jp/v1/devices/current" {
+		t.Fatal("make uri error")
+	}
 }
