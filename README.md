@@ -21,7 +21,7 @@ import (
 )
 
 func main() {
-	client, err := ondotori.New("xxxxxx", "rbxx1234", "password")
+	client, err := ondotori.New("API Token here", "rbxx1234", "password")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
