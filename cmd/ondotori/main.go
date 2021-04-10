@@ -21,6 +21,12 @@ func main() {
 
 func do_access_ondotori() {
 
+	// webstorage.json like this
+	// {
+	//     "api_key":"xxxxxxxxxxxxxx",
+	//     "user_id" : "rbxx1234",
+	//     "user_pass" : "password"
+	// }
 	raw, err := ioutil.ReadFile("/var/tmp/webstorage.json")
 	if err != nil {
 		fmt.Println(err.Error())
