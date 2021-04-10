@@ -10,7 +10,7 @@ go get -u github.com/k28/go-ondotori
 ## Example
 
 ### Get Current Readings
-```
+```golang
 package main
 
 import (
