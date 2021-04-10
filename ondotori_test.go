@@ -11,15 +11,15 @@ func TestNew(t *testing.T) {
 		t.Fatal("err is not null.")
 	}
 
-	if client.token != token {
-		t.Fatal("toke is not equal.")
+	if client.baseParam.Token != token {
+		t.Fatal("token is not equal.")
 	}
 
-	if client.loginId != id {
+	if client.baseParam.LoginId != id {
 		t.Fatal("id is not equal.")
 	}
 
-	if client.loginPass != pass {
+	if client.baseParam.LoginPass != pass {
 		t.Fatal("pass is not equal.")
 	}
 }

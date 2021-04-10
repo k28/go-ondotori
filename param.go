@@ -15,13 +15,13 @@ type CurrentParam struct {
 	BaseSerial   []string
 }
 
-func (param *BaseParam) AddParams(src map[string]interface{}) {
-	src["token"] = param.Token
+func (param BaseParam) AddParams(src map[string]interface{}) {
+	src["api-key"] = param.Token
 	src["login-id"] = param.LoginId
 	src["login-pass"] = param.LoginPass
 }
 
-func (param *CurrentParam) MakeJsonMap(baseParam *BaseParam) map[string]interface{} {
+func (param CurrentParam) MakeJsonMap(baseParam BaseParam) map[string]interface{} {
 	p := make(map[string]interface{})
 
 	baseParam.AddParams(p)

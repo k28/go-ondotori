@@ -29,7 +29,7 @@ func TestAddParams(t *testing.T) {
 	m := make(map[string]interface{})
 	cp.AddParams(m)
 
-	testMapExpect(t, "token123", m["token"])
+	testMapExpect(t, "token123", m["api-key"])
 	testMapExpect(t, "ond123", m["login-id"])
 	testMapExpect(t, "pass123", m["login-pass"])
 }
@@ -42,8 +42,8 @@ func TestCurrentParams(t *testing.T) {
 		BaseSerial:   []string{},
 	}
 
-	r := cp.MakeJsonMap(&baseParam)
-	testMapExpect(t, "token123", r["token"])
+	r := cp.MakeJsonMap(baseParam)
+	testMapExpect(t, "token123", r["api-key"])
 	testMapExpect(t, nil, r["remote-serial"])
 	testMapExpect(t, nil, r["base-serial"])
 }
@@ -56,8 +56,8 @@ func TestCurrentParams2(t *testing.T) {
 		BaseSerial:   []string{},
 	}
 
-	r := cp.MakeJsonMap(&baseParam)
-	testMapExpect(t, "token123", r["token"])
+	r := cp.MakeJsonMap(baseParam)
+	testMapExpect(t, "token123", r["api-key"])
 	testMapExpect(t, []string{"remoteserial"}, r["remote-serial"])
 	testMapExpect(t, nil, r["base-serial"])
 }
@@ -70,8 +70,8 @@ func TestCurrentParams3(t *testing.T) {
 		BaseSerial:   []string{"baseserial"},
 	}
 
-	r := cp.MakeJsonMap(&baseParam)
-	testMapExpect(t, "token123", r["token"])
+	r := cp.MakeJsonMap(baseParam)
+	testMapExpect(t, "token123", r["api-key"])
 	testMapExpect(t, []string{"baseserial"}, r["base-serial"])
 	testMapExpect(t, nil, r["remote-serial"])
 }

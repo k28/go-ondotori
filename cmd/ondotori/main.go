@@ -38,7 +38,12 @@ func do_access_ondotori() {
 		return
 	}
 
-	res, err := client.Get(context.TODO())
+	cp := ondotori.CurrentParam{
+		RemoteSerial: []string{},
+		BaseSerial:   []string{},
+	}
+
+	res, err := client.Get(cp, context.TODO())
 	if err != nil {
 		fmt.Println(err.Error())
 		return
