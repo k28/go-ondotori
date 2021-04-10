@@ -1,9 +1,9 @@
 package ondotori
 
 import (
-	"testing"
-	"io/ioutil"
 	"encoding/json"
+	"io/ioutil"
+	"testing"
 )
 
 func testEquals(t *testing.T, expect string, value string) {
@@ -55,7 +55,7 @@ func testTR7Device(t *testing.T, device *Devices) {
 	testEquals(t, "%", ch2.Unit)
 }
 
-func testTR4Device(t* testing.T, device *Devices) {
+func testTR4Device(t *testing.T, device *Devices) {
 	xtrail, _ := device.GetDevice("582C0D89")
 	testEquals(t, "1", xtrail.Num)
 	testEquals(t, "TR41", xtrail.Model)

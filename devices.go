@@ -7,36 +7,36 @@ type Devices struct {
 }
 
 type Device struct {
-	Num string `json:"num"`
-	Serial string `json:"serial"`
-	Model string `json:"model"`
-	Name string `json:"name"`
-	Battery string `json:"battery"`
-	Rssi string `json:"rssi"`
-	TimeDiff string `json:"time_diff"`
-	StdBias string `json:"std_bias"`
-	DstBias string `json:"dst_bias"`
-	UnixTime string `json:"unixtime"`
-	Channel []Record `json:"channel"`
+	Num      string   `json:"num"`
+	Serial   string   `json:"serial"`
+	Model    string   `json:"model"`
+	Name     string   `json:"name"`
+	Battery  string   `json:"battery"`
+	Rssi     string   `json:"rssi"`
+	TimeDiff string   `json:"time_diff"`
+	StdBias  string   `json:"std_bias"`
+	DstBias  string   `json:"dst_bias"`
+	UnixTime string   `json:"unixtime"`
+	Channel  []Record `json:"channel"`
 	BaseUnit BaseUnit `json:"baseunit"`
-	Group Group `json:"group"`
+	Group    Group    `json:"group"`
 }
 
 type Record struct {
-	Num string    `json:"num"`
-	Name string   `json:"name"`
-	Value string  `json:"value"`
-	Unit string   `json:"unit"`
+	Num   string `json:"num"`
+	Name  string `json:"name"`
+	Value string `json:"value"`
+	Unit  string `json:"unit"`
 }
 
 type BaseUnit struct {
 	Serial string `json:"serial"`
-	Model string  `json:"model"`
-	Name string   `json:"name"`
+	Model  string `json:"model"`
+	Name   string `json:"name"`
 }
 
 type Group struct {
-	Num	string	`json:"num"`
+	Num  string `json:"num"`
 	Name string `json:"name"`
 }
 
@@ -49,4 +49,3 @@ func (devices *Devices) GetDevice(serial string) (*Device, error) {
 
 	return nil, errors.New("not found")
 }
-

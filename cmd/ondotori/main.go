@@ -1,17 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"context"
-	"io/ioutil"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
+
 	ondotori "github.com/k28/go-ondotori"
 )
 
 type AccessInfo struct {
-	Token	string `json:"api_key"`
-	Id		string `json:"user_id"`
-	Pass	string `json:"user_pass"`
+	Token string `json:"api_key"`
+	Id    string `json:"user_id"`
+	Pass  string `json:"user_pass"`
 }
 
 func main() {
@@ -45,4 +46,3 @@ func do_access_ondotori() {
 
 	fmt.Println("response ", res.DeviceList)
 }
-

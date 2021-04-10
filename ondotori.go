@@ -1,18 +1,18 @@
 package ondotori
 
 import (
-	"fmt"
-	"net/http"
+	"bytes"
 	"context"
 	"encoding/json"
-	"io"
-	"os"
 	"errors"
-	"bytes"
+	"fmt"
+	"io"
+	"net/http"
+	"os"
 )
 
 type OndotoriError struct {
-	Code int
+	Code    int
 	Message string
 }
 
@@ -34,29 +34,17 @@ func OptionHTTPClient(hc *http.Client) Option {
 }
 
 type Client struct {
-	token string
-	loginId string
-	loginPass string
+	token      string
+	loginId    string
+	loginPass  string
 	httpclient httpClient
-}
-
-type CurrentParams struct {
-	remote []string
-	base []string
-}
-
-func (p *CurrentParams) validate() error {
-	if len(p.remote) > 0 && len(p.base) > 0 {
-		return &OndotoriError{9999, "子機のシリアルと親機のシリアルは同時に指定できません"}
-	}
-	return nil
 }
 
 func New(token string, login_id string, login_pass string, opts ...Option) (*Client, error) {
 	s := &Client{
-		token: token,
-		loginId: login_id,
-		loginPass: login_pass,
+		token:      token,
+		loginId:    login_id,
+		loginPass:  login_pass,
 		httpclient: &http.Client{},
 	}
 
@@ -126,12 +114,11 @@ func (client *Client) request(ctx context.Context, req *http.Request) (*http.Res
 	}()
 
 	select {
-		case resp := <-respCh:
-			return resp, nil
-		case err := <-errCh:
-			return nil, err
-		case <-ctx.Done():
-			return nil, errors.New("HTTP request cancelled")
+	case resp := <-respCh:
+		return resp, nil
+	case err := <-errCh:
+		return nil, err
+	case <-ctx.Done():
+		return nil, errors.New("HTTP request cancelled")
 	}
 }
-
