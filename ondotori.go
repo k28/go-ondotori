@@ -69,14 +69,14 @@ func (client *Client) GetCurrent(param CurrentParam, ctx context.Context) (*Devi
 	}
 }
 
-func (client *Client) GetLatestData(param LatestDataParam, ctx context.Context) (*LatestData, error) {
+func (client *Client) GetLatestData(param LatestDataParam, ctx context.Context) (*DeviceData, error) {
 
 	resp, err := client.Get(param, ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	if r, ok := resp.(*LatestData); ok {
+	if r, ok := resp.(*DeviceData); ok {
 		return r, nil
 	} else {
 		return nil, fmt.Errorf("parse format error 9998")

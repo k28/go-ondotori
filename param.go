@@ -89,7 +89,7 @@ func (param LatestDataParam) MakeUri(baseParam BaseParam) string {
 }
 
 func (param LatestDataParam) ParseResponse(reader io.Reader) (interface{}, error) {
-	var body LatestData
+	var body DeviceData
 	if err := json.NewDecoder(reader).Decode(&body); err != nil {
 		return nil, err
 	}

@@ -1,6 +1,6 @@
 package ondotori
 
-type LatestData struct {
+type DeviceData struct {
 	Serial   string    `json:"serial"`
 	Model    string    `json:"model"`
 	TimeDiff string    `json:"time_diff"`
