@@ -1,10 +1,15 @@
 package ondotori
 
-import "strings"
+import (
+	"encoding/json"
+	"io"
+	"strings"
+)
 
 type makeParam interface {
 	MakeJsonMap(baseParam BaseParam) map[string]interface{}
 	MakeUri(baseParam BaseParam) string
+	ParseResponse(reader io.Reader) (interface{}, error)
 }
 
 type BaseParam struct {
@@ -16,6 +21,10 @@ type BaseParam struct {
 type CurrentParam struct {
 	RemoteSerial []string
 	BaseSerial   []string
+}
+
+type LatestDataParam struct {
+	RemoteSerial string
 }
 
 func (param BaseParam) AddParams(src map[string]interface{}) {
@@ -51,4 +60,39 @@ func (param CurrentParam) MakeJsonMap(baseParam BaseParam) map[string]interface{
 func (param CurrentParam) MakeUri(baseParam BaseParam) string {
 	u := baseParam.GetBaseURI()
 	return u + "current"
+}
+
+func (param CurrentParam) ParseResponse(reader io.Reader) (interface{}, error) {
+	var body Devices
+	if err := json.NewDecoder(reader).Decode(&body); err != nil {
+		return nil, err
+	}
+
+	return &body, nil
+}
+
+func (param LatestDataParam) MakeJsonMap(baseParam BaseParam) map[string]interface{} {
+	p := make(map[string]interface{})
+
+	baseParam.AddParams(p)
+
+	if len(param.RemoteSerial) > 0 {
+		p["remote-serial"] = param.RemoteSerial
+	}
+
+	return p
+}
+
+func (param LatestDataParam) MakeUri(baseParam BaseParam) string {
+	u := baseParam.GetBaseURI()
+	return u + "latest-data"
+}
+
+func (param LatestDataParam) ParseResponse(reader io.Reader) (interface{}, error) {
+	var body LatestData
+	if err := json.NewDecoder(reader).Decode(&body); err != nil {
+		return nil, err
+	}
+
+	return &body, nil
 }

@@ -32,7 +32,7 @@ func main() {
 		BaseSerial:   []string{},
 	}
 
-	res, err := client.Get(cp, context.TODO())
+	res, err := client.GetCurrent(cp, context.TODO())
 	if err != nil {
 		fmt.Println(err.Error())
 		return

@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"os"
 )
 
 type OndotoriError struct {
@@ -56,12 +55,40 @@ func New(token string, login_id string, login_pass string, opts ...Option) (*Cli
 	return s, nil
 }
 
-func (client *Client) Get(param makeParam, ctx context.Context) (*Devices, error) {
+func (client *Client) GetCurrent(param CurrentParam, ctx context.Context) (*Devices, error) {
+
+	resp, err := client.Get(param, ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if r, ok := resp.(*Devices); ok {
+		return r, nil
+	} else {
+		return nil, fmt.Errorf("parse format error 9999")
+	}
+}
+
+func (client *Client) GetLatestData(param LatestDataParam, ctx context.Context) (*LatestData, error) {
+
+	resp, err := client.Get(param, ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if r, ok := resp.(*LatestData); ok {
+		return r, nil
+	} else {
+		return nil, fmt.Errorf("parse format error 9998")
+	}
+}
+
+func (client *Client) Get(param makeParam, ctx context.Context) (interface{}, error) {
 	jsonReq, err := json.Marshal(param.MakeJsonMap(client.baseParam))
 	if err != nil {
 		return nil, err
 	}
-	// fmt.Println("Request :", string(jsonReq))
+	fmt.Println("Request :", string(jsonReq))
 	u := param.MakeUri(client.baseParam)
 	req, err := http.NewRequest(http.MethodPost, u, bytes.NewBuffer([]byte(string(jsonReq))))
 	if err != nil {
@@ -75,26 +102,16 @@ func (client *Client) Get(param makeParam, ctx context.Context) (*Devices, error
 	if err != nil {
 		return nil, err
 	}
+	defer resp.Body.Close()
 
 	if resp.StatusCode >= 400 {
 		return nil, fmt.Errorf("bad response status code %d", resp.StatusCode)
 	}
 
-	//b, err := io.ioutil.ReadAll(resp.Body)
-	defer resp.Body.Close()
-	if err != nil {
-		return nil, err
-	}
-
 	var r io.Reader = resp.Body
-	r = io.TeeReader(r, os.Stderr)
+	// r = io.TeeReader(r, os.Stderr)
 
-	var body Devices
-	if err := json.NewDecoder(r).Decode(&body); err != nil {
-		return nil, err
-	}
-
-	return &body, nil
+	return param.ParseResponse(r)
 }
 
 func (client *Client) request(ctx context.Context, req *http.Request) (*http.Response, error) {

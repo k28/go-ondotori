@@ -84,6 +84,17 @@ func TestCurrentParams3(t *testing.T) {
 	testMapExpect(t, nil, r["remote-serial"])
 }
 
+func TestLatestDataParam(t *testing.T) {
+	baseParam := makeTestBaseParam()
+	cp := LatestDataParam{
+		RemoteSerial: "5F52123C",
+	}
+
+	r := cp.MakeJsonMap(baseParam)
+	testMapExpect(t, "token123", r["api-key"])
+	testMapExpect(t, "5F52123C", r["remote-serial"])
+}
+
 func TestGetBaseUri(t *testing.T) {
 	testBaseUrl(t, "tbac1234", true)
 	testBaseUrl(t, "ondotori", true)
@@ -114,6 +125,18 @@ func TestMakeUri(t *testing.T) {
 	}
 
 	if p.MakeUri(b) != "https://api.webstorage.jp/v1/devices/current" {
+		t.Fatal("make uri error")
+	}
+}
+
+func TestMakeUriLatestData(t *testing.T) {
+	b := makeTestBaseParam()
+
+	p := LatestDataParam{
+		RemoteSerial: "5236184A",
+	}
+
+	if p.MakeUri(b) != "https://api.webstorage.jp/v1/devices/latest-data" {
 		t.Fatal("make uri error")
 	}
 }

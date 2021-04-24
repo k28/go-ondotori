@@ -2,7 +2,7 @@
   "devices": [
     {
       "num": "1",
-      "serial": "32140005",
+      "serial": "3214XXXX",
       "model": "TR-72wf",
       "name": "Nagaimo",
       "battery": "5",
@@ -26,7 +26,7 @@
         }
       ],
       "baseunit": {
-        "serial": "32140005",
+        "serial": "3214XXXX",
         "model": "TR-72wf",
         "name": "Nagaimo"
       },
@@ -37,7 +37,7 @@
     },
     {
       "num": "1",
-      "serial": "3F36100B",
+      "serial": "3F36XXXX",
       "model": "TR-72wb",
       "name": "子供部屋",
       "battery": "1",
@@ -61,7 +61,7 @@
         }
       ],
       "baseunit": {
-        "serial": "3F36100B",
+        "serial": "3F36XXXX",
         "model": "TR-72wb",
         "name": "子供部屋"
       },
@@ -72,7 +72,7 @@
     },
     {
       "num": "1",
-      "serial": "52340BB5",
+      "serial": "5234XXXX",
       "model": "TR-71wb",
       "name": "蓄熱の上 TR7",
       "battery": "1",
@@ -96,7 +96,7 @@
         }
       ],
       "baseunit": {
-        "serial": "52340BB5",
+        "serial": "5234XXXX",
         "model": "TR-71wb",
         "name": "蓄熱の上 TR7"
       },
@@ -107,7 +107,7 @@
     },
     {
       "num": "1",
-      "serial": "5236184E",
+      "serial": "5236XXXX",
       "model": "TR-72wb",
       "name": "Living TR-72wb",
       "battery": "1",
@@ -131,7 +131,7 @@
         }
       ],
       "baseunit": {
-        "serial": "5236184E",
+        "serial": "5236XXXX",
         "model": "TR-72wb",
         "name": "Living TR-72wb"
       },
@@ -142,7 +142,7 @@
     },
     {
       "num": "1",
-      "serial": "5236264D",
+      "serial": "5236XXXX",
       "model": "TR-72wb",
       "name": "2F",
       "battery": "5",
@@ -166,7 +166,7 @@
         }
       ],
       "baseunit": {
-        "serial": "5236264D",
+        "serial": "5236XXXX",
         "model": "TR-72wb",
         "name": "2F"
       },
@@ -177,7 +177,7 @@
     },
     {
       "num": "1",
-      "serial": "582C0D89",
+      "serial": "582CXXXX",
       "model": "TR41",
       "name": "X-Trail",
       "battery": "5",
@@ -195,7 +195,7 @@
         }
       ],
       "baseunit": {
-        "serial": "582C0D89",
+        "serial": "582CXXXX",
         "model": "TR41",
         "name": "X-Trail"
       },
@@ -206,7 +206,7 @@
     },
     {
       "num": "2",
-      "serial": "5282036C",
+      "serial": "5282XXXX",
       "model": "RTR502B",
       "name": "玄関",
       "battery": "5",
@@ -224,7 +224,7 @@
         }
       ],
       "baseunit": {
-        "serial": "5858001E",
+        "serial": "5858XXXX",
         "model": "RTR500BW",
         "name": "k28home"
       },
@@ -235,7 +235,7 @@
     },
     {
       "num": "3",
-      "serial": "52C7000A",
+      "serial": "52C7XXXX",
       "model": "RTR507B",
       "name": "2F洗面所",
       "battery": "5",
@@ -259,7 +259,7 @@
         }
       ],
       "baseunit": {
-        "serial": "5858001E",
+        "serial": "5858XXXX",
         "model": "RTR500BW",
         "name": "k28home"
       },
@@ -270,7 +270,7 @@
     },
     {
       "num": "1",
-      "serial": "52800010",
+      "serial": "5280XXXX",
       "model": "RTR501B",
       "name": "外気",
       "battery": "5",
@@ -288,7 +288,7 @@
         }
       ],
       "baseunit": {
-        "serial": "5858001E",
+        "serial": "5858XXXX",
         "model": "RTR500BW",
         "name": "k28home"
       },
@@ -299,7 +299,7 @@
     },
     {
       "num": "4",
-      "serial": "52C30078",
+      "serial": "52C3XXXX",
       "model": "RTR505B-V",
       "name": "消費電力",
       "battery": "5",
@@ -317,7 +317,7 @@
         }
       ],
       "baseunit": {
-        "serial": "5858001E",
+        "serial": "5858XXXX",
         "model": "RTR500BW",
         "name": "k28home"
       },
