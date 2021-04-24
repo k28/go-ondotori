@@ -7,7 +7,7 @@ import (
 )
 
 func TestLatestData(t *testing.T) {
-	js, err := ioutil.ReadFile("./device_data.json")
+	js, err := ioutil.ReadFile("./test_resources/device_data.json")
 	if err != nil {
 		t.Fatal("jsondevice.json not found.", err.Error())
 	}

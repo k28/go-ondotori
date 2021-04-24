@@ -13,7 +13,7 @@ func testEquals(t *testing.T, expect interface{}, value interface{}) {
 }
 
 func TestDevices(t *testing.T) {
-	js, err := ioutil.ReadFile("./devices.json")
+	js, err := ioutil.ReadFile("./test_resources/devices.json")
 	if err != nil {
 		t.Fatal("jsondevice.json not found.", err.Error())
 	}
