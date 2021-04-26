@@ -55,7 +55,7 @@ func New(token string, login_id string, login_pass string, opts ...Option) (*Cli
 	return s, nil
 }
 
-func (client *Client) GetCurrent(param CurrentParam, ctx context.Context) (*Devices, error) {
+func (client *Client) GetCurrent(param GetCurrentParam, ctx context.Context) (*Devices, error) {
 
 	resp, err := client.Get(param, ctx)
 	if err != nil {
@@ -69,7 +69,7 @@ func (client *Client) GetCurrent(param CurrentParam, ctx context.Context) (*Devi
 	}
 }
 
-func (client *Client) GetLatestData(param LatestDataParam, ctx context.Context) (*DeviceData, error) {
+func (client *Client) GetLatestData(param GetLatestDataParam, ctx context.Context) (*DeviceData, error) {
 
 	resp, err := client.Get(param, ctx)
 	if err != nil {

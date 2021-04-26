@@ -28,7 +28,7 @@ func main() {
 		return
 	}
 
-	cp := ondotori.CurrentParam{
+	cp := ondotori.GetCurrentParam{
 		RemoteSerial: []string{},
 		BaseSerial:   []string{},
 	}
@@ -52,7 +52,7 @@ func main() {
 		return
 	}
 
-	cp := ondotori.LatestDataParam{
+	cp := ondotori.GetLatestDataParam{
 		RemoteSerial: "Device Serial here",
 	}
 

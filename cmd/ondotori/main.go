@@ -53,7 +53,7 @@ func do_get_current() {
 		return
 	}
 
-	cp := ondotori.CurrentParam{
+	cp := ondotori.GetCurrentParam{
 		RemoteSerial: []string{},
 		BaseSerial:   []string{},
 	}
@@ -81,7 +81,7 @@ func do_get_latest_info() {
 		return
 	}
 
-	cp := ondotori.LatestDataParam{
+	cp := ondotori.GetLatestDataParam{
 		RemoteSerial: "5236184E",
 	}
 
