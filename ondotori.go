@@ -83,6 +83,20 @@ func (client *Client) GetLatestData(param LatestDataParam, ctx context.Context) 
 	}
 }
 
+func (client *Client) GetData(param GetDataParam, ctx context.Context) (*DeviceData, error) {
+
+	resp, err := client.Get(param, ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if r, ok := resp.(*DeviceData); ok {
+		return r, nil
+	} else {
+		return nil, fmt.Errorf("parse format error 9998")
+	}
+}
+
 func (client *Client) Get(param makeParam, ctx context.Context) (interface{}, error) {
 	jsonReq, err := json.Marshal(param.MakeJsonMap(client.baseParam))
 	if err != nil {

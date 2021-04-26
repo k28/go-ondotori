@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"time"
 
 	ondotori "github.com/k28/go-ondotori"
 )
@@ -17,7 +18,8 @@ type AccessInfo struct {
 
 func main() {
 	// do_get_current()
-	do_get_latest_info()
+	// do_get_latest_info()
+	do_get_data()
 }
 
 func load_access_info() (*AccessInfo, error) {
@@ -84,6 +86,39 @@ func do_get_latest_info() {
 	}
 
 	res, err := client.GetLatestData(cp, context.TODO())
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println("response ", res)
+}
+
+func do_get_data() {
+	ac, err := load_access_info()
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	client, err := ondotori.New(ac.Token, ac.Id, ac.Pass)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	now := time.Now()
+	from := now.Add(-1 * time.Hour)
+	limit := uint16(3)
+
+	cp := ondotori.GetDataParam{
+		RemoteSerial: "5236184E",
+		From:         &from,
+		To:           &now,
+		Number:       &limit,
+	}
+
+	res, err := client.GetData(cp, context.TODO())
 	if err != nil {
 		fmt.Println(err.Error())
 		return
