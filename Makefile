@@ -26,7 +26,7 @@ devel-deps: deps
 ## Run tests
 .PHONY: test
 test: deps
-	go test ./...
+	go test $(go list ./... | grep -v /cmd/)
 
 ## Lint
 .PHONY: lint
