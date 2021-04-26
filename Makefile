@@ -12,7 +12,6 @@ export GO11MODULE=on
 .PHONY: deps
 deps:
 	go get -v -d
-	go mod init
 
 # 開発に必要な依存をインストールする
 ## Setup
@@ -27,7 +26,7 @@ devel-deps: deps
 ## Run tests
 .PHONY: test
 test: deps
-	go test ./...
+	go test $(go list ./... | grep -v /cmd/)
 
 ## Lint
 .PHONY: lint
