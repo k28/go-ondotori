@@ -12,6 +12,7 @@ export GO11MODULE=on
 .PHONY: deps
 deps:
 	go get -v -d
+	go mod init
 
 # 開発に必要な依存をインストールする
 ## Setup
