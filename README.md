@@ -46,16 +46,6 @@ func main() {
 ## Get Latest Data
 
 ```golang
-package main
-
-import (
-	"context"
-	"fmt"
-
-	"github.com/k28/go-ondotori"
-)
-
-func main() {
 	client, err := ondotori.New("API Token here", "rbxx1234", "password")
 	if err != nil {
 		fmt.Println(err.Error())
@@ -74,7 +64,29 @@ func main() {
 
 	// res will be DeviceData
 	fmt.Println("response ", res)
-}
+```
+
+## GetData
+
+```golang
+	client, err := ondotori.New("API Token here", "rbxx1234", "password")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	cp := ondotori.GetDataParam{
+		RemoteSerial: "Device Serial here",
+	}
+
+	res, err := client.GetData(cp, context.TODO())
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	// res will be DeviceData
+	fmt.Println("response ", res)
 ```
 
 ## License
