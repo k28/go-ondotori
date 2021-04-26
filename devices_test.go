@@ -6,14 +6,8 @@ import (
 	"testing"
 )
 
-func testEquals(t *testing.T, expect string, value string) {
-	if expect != value {
-		t.Fatal("expect [", expect, "] but [", value, "]")
-	}
-}
-
 func TestDevices(t *testing.T) {
-	js, err := ioutil.ReadFile("./devices.json")
+	js, err := ioutil.ReadFile("./test_resources/devices.json")
 	if err != nil {
 		t.Fatal("jsondevice.json not found.", err.Error())
 	}
@@ -31,7 +25,7 @@ func TestDevices(t *testing.T) {
 }
 
 func testTR7Device(t *testing.T, device *Devices) {
-	nagaimo, _ := device.GetDevice("32140005")
+	nagaimo, _ := device.GetDevice("3214XXXX")
 	testEquals(t, "1", nagaimo.Num)
 	testEquals(t, "TR-72wf", nagaimo.Model)
 	testEquals(t, "5", nagaimo.Battery)
@@ -56,7 +50,7 @@ func testTR7Device(t *testing.T, device *Devices) {
 }
 
 func testTR4Device(t *testing.T, device *Devices) {
-	xtrail, _ := device.GetDevice("582C0D89")
+	xtrail, _ := device.GetDevice("582CXXXX")
 	testEquals(t, "1", xtrail.Num)
 	testEquals(t, "TR41", xtrail.Model)
 	testEquals(t, "X-Trail", xtrail.Name)
@@ -74,7 +68,7 @@ func testTR4Device(t *testing.T, device *Devices) {
 }
 
 func testRTR500Device(t *testing.T, device *Devices) {
-	rtr500, _ := device.GetDevice("52800010")
+	rtr500, _ := device.GetDevice("5280XXXX")
 	testEquals(t, "1", rtr500.Num)
 	testEquals(t, "RTR501B", rtr500.Model)
 	testEquals(t, "外気", rtr500.Name)
@@ -91,7 +85,7 @@ func testRTR500Device(t *testing.T, device *Devices) {
 	testEquals(t, "C", ch.Unit)
 
 	baseUnit := rtr500.BaseUnit
-	testEquals(t, "5858001E", baseUnit.Serial)
+	testEquals(t, "5858XXXX", baseUnit.Serial)
 	testEquals(t, "RTR500BW", baseUnit.Model)
 	testEquals(t, "k28home", baseUnit.Name)
 

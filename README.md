@@ -10,6 +10,7 @@ go get -u github.com/k28/go-ondotori
 ## Example
 
 ### Get Current Readings
+
 ```golang
 package main
 
@@ -27,12 +28,12 @@ func main() {
 		return
 	}
 
-	cp := ondotori.CurrentParam{
+	cp := ondotori.GetCurrentParam{
 		RemoteSerial: []string{},
 		BaseSerial:   []string{},
 	}
 
-	res, err := client.Get(cp, context.TODO())
+	res, err := client.GetCurrent(cp, context.TODO())
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -40,6 +41,52 @@ func main() {
 
 	fmt.Println("response ", res.DeviceList)
 }
+```
+
+## Get Latest Data
+
+```golang
+	client, err := ondotori.New("API Token here", "rbxx1234", "password")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	cp := ondotori.GetLatestDataParam{
+		RemoteSerial: "Device Serial here",
+	}
+
+	res, err := client.GetLatestData(cp, context.TODO())
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	// res will be DeviceData
+	fmt.Println("response ", res)
+```
+
+## GetData
+
+```golang
+	client, err := ondotori.New("API Token here", "rbxx1234", "password")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	cp := ondotori.GetDataParam{
+		RemoteSerial: "Device Serial here",
+	}
+
+	res, err := client.GetData(cp, context.TODO())
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	// res will be DeviceData
+	fmt.Println("response ", res)
 ```
 
 ## License

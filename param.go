@@ -1,21 +1,20 @@
 package ondotori
 
-import "strings"
+import (
+	"io"
+	"strings"
+)
 
 type makeParam interface {
 	MakeJsonMap(baseParam BaseParam) map[string]interface{}
 	MakeUri(baseParam BaseParam) string
+	ParseResponse(reader io.Reader) (interface{}, error)
 }
 
 type BaseParam struct {
 	Token     string
 	LoginId   string
 	LoginPass string
-}
-
-type CurrentParam struct {
-	RemoteSerial []string
-	BaseSerial   []string
 }
 
 func (param BaseParam) AddParams(src map[string]interface{}) {
@@ -30,25 +29,4 @@ func (param BaseParam) GetBaseURI() string {
 		return "https://api.webstorage-service.com/v1/devices/"
 	}
 	return "https://api.webstorage.jp/v1/devices/"
-}
-
-func (param CurrentParam) MakeJsonMap(baseParam BaseParam) map[string]interface{} {
-	p := make(map[string]interface{})
-
-	baseParam.AddParams(p)
-
-	if len(param.RemoteSerial) > 0 {
-		p["remote-serial"] = param.RemoteSerial
-	}
-
-	if len(param.BaseSerial) > 0 {
-		p["base-serial"] = param.BaseSerial
-	}
-
-	return p
-}
-
-func (param CurrentParam) MakeUri(baseParam BaseParam) string {
-	u := baseParam.GetBaseURI()
-	return u + "current"
 }

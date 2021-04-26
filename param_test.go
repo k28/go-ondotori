@@ -42,48 +42,6 @@ func TestAddParams(t *testing.T) {
 	testMapExpect(t, "pass123", m["login-pass"])
 }
 
-func TestCurrentParams(t *testing.T) {
-	baseParam := makeTestBaseParam()
-
-	cp := CurrentParam{
-		RemoteSerial: []string{},
-		BaseSerial:   []string{},
-	}
-
-	r := cp.MakeJsonMap(baseParam)
-	testMapExpect(t, "token123", r["api-key"])
-	testMapExpect(t, nil, r["remote-serial"])
-	testMapExpect(t, nil, r["base-serial"])
-}
-
-func TestCurrentParams2(t *testing.T) {
-	baseParam := makeTestBaseParam()
-
-	cp := CurrentParam{
-		RemoteSerial: []string{"remoteserial"},
-		BaseSerial:   []string{},
-	}
-
-	r := cp.MakeJsonMap(baseParam)
-	testMapExpect(t, "token123", r["api-key"])
-	testMapExpect(t, []string{"remoteserial"}, r["remote-serial"])
-	testMapExpect(t, nil, r["base-serial"])
-}
-
-func TestCurrentParams3(t *testing.T) {
-	baseParam := makeTestBaseParam()
-
-	cp := CurrentParam{
-		RemoteSerial: []string{},
-		BaseSerial:   []string{"baseserial"},
-	}
-
-	r := cp.MakeJsonMap(baseParam)
-	testMapExpect(t, "token123", r["api-key"])
-	testMapExpect(t, []string{"baseserial"}, r["base-serial"])
-	testMapExpect(t, nil, r["remote-serial"])
-}
-
 func TestGetBaseUri(t *testing.T) {
 	testBaseUrl(t, "tbac1234", true)
 	testBaseUrl(t, "ondotori", true)
@@ -102,18 +60,5 @@ func testBaseUrl(t *testing.T, id string, isJapan bool) {
 
 	if u != expect {
 		t.Fatal("expect [", expect, "] but [", u, "] id:[", id, "]")
-	}
-}
-
-func TestMakeUri(t *testing.T) {
-	b := makeTestBaseParam()
-
-	p := CurrentParam{
-		RemoteSerial: []string{},
-		BaseSerial:   []string{},
-	}
-
-	if p.MakeUri(b) != "https://api.webstorage.jp/v1/devices/current" {
-		t.Fatal("make uri error")
 	}
 }
