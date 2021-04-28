@@ -97,6 +97,32 @@ func (client *Client) GetData(param GetDataParam, ctx context.Context) (*DeviceD
 	}
 }
 
+func (client *Client) GetLatestDataRTR500(param GetLatestDataRTR500Param, ctx context.Context) (*DeviceDataRTR500, error) {
+	resp, err := client.Get(param, ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if r, ok := resp.(*DeviceDataRTR500); ok {
+		return r, nil
+	} else {
+		return nil, fmt.Errorf("parse format error 9998")
+	}
+}
+
+func (client *Client) GetDataRTR500(param GetDataRTR500Param, ctx context.Context) (*DeviceDataRTR500, error) {
+	resp, err := client.Get(param, ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if r, ok := resp.(*DeviceDataRTR500); ok {
+		return r, nil
+	} else {
+		return nil, fmt.Errorf("parse format error 9998")
+	}
+}
+
 func (client *Client) Get(param makeParam, ctx context.Context) (interface{}, error) {
 	jsonReq, err := json.Marshal(param.MakeJsonMap(client.baseParam))
 	if err != nil {
@@ -123,7 +149,7 @@ func (client *Client) Get(param makeParam, ctx context.Context) (interface{}, er
 	}
 
 	var r io.Reader = resp.Body
-	// r = io.TeeReader(r, os.Stderr)
+	//r = io.TeeReader(r, os.Stderr)
 
 	return param.ParseResponse(r)
 }

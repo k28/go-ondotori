@@ -41,3 +41,33 @@ func testData(t *testing.T, ld *DeviceData) {
 	testEquals(t, "22.7", data.Ch1)
 	testEquals(t, "27", data.Ch2)
 }
+
+func TestLatestDataRTR500(t *testing.T) {
+	js, err := ioutil.ReadFile("./test_resources/device_data_rtr500.json")
+	if err != nil {
+		t.Fatal("jsondevice.json not found.", err.Error())
+	}
+
+	var ld DeviceDataRTR500
+	json.Unmarshal([]byte(js), &ld)
+
+	testEquals(t, "52800010", ld.RemoteSerial)
+	testEquals(t, "RTR501B", ld.RemoteModel)
+	testEquals(t, "外気", ld.RemoteName)
+	testEquals(t, "5858001E", ld.BaseSerial)
+	testEquals(t, "RTR500BW", ld.BaseModel)
+	testEquals(t, "k28home", ld.BaseName)
+	testEquals(t, "540", ld.TimeDiff)
+	testEquals(t, "60", ld.StdBias)
+	testEquals(t, "30", ld.DstBias)
+
+	ch := ld.Channel[0]
+	testEquals(t, "ch1", ch.Name)
+	testEquals(t, "1", ch.Num)
+	testEquals(t, "C", ch.Unit)
+
+	dt := ld.Data[0]
+	testEquals(t, "1619463974", dt.Unixtime)
+	testEquals(t, "34165", dt.DataId)
+	testEquals(t, "0.6", dt.Ch1)
+}
