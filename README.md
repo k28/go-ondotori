@@ -105,7 +105,28 @@ func main() {
 		return
 	}
 
-	// res will be DeviceData
+	// res will be DeviceDataRTR500, see device_data.go
+	fmt.Println("response ", res)
+```
+
+### Get Data by Specific Period and Number [RTR500BW]
+
+```golang
+	cp := ondotori.GetDataRTR500Param{
+		RemoteSerial: "52800010",
+		BaseSerial:   "5858001E",
+		From:         &from,
+		To:           &now,
+		Number:       &limit,
+	}
+
+	res, err := client.GetDataRTR500(cp, context.TODO())
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	// res will be DeviceDataRTR500, see device_data.go
 	fmt.Println("response ", res)
 ```
 
