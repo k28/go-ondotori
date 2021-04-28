@@ -19,7 +19,8 @@ type AccessInfo struct {
 func main() {
 	// do_get_current()
 	// do_get_latest_info()
-	do_get_data()
+	// do_get_data()
+	do_get_latest_rtr500()
 }
 
 func load_access_info() (*AccessInfo, error) {
@@ -119,6 +120,33 @@ func do_get_data() {
 	}
 
 	res, err := client.GetData(cp, context.TODO())
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println("response ", res)
+}
+
+func do_get_latest_rtr500() {
+	ac, err := load_access_info()
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	client, err := ondotori.New(ac.Token, ac.Id, ac.Pass)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	cp := ondotori.GetLatestDataRTR500Param{
+		RemoteSerial: "52800010",
+		BaseSerial:   "5858001E",
+	}
+
+	res, err := client.GetLatestDataRTR500(cp, context.TODO())
 	if err != nil {
 		fmt.Println(err.Error())
 		return

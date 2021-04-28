@@ -43,7 +43,7 @@ func main() {
 }
 ```
 
-## Get Latest Data
+## Get Latest Data (300 most recent readings) [TR-7wb/nw/wf, TR4]
 
 ```golang
 	client, err := ondotori.New("API Token here", "rbxx1234", "password")
@@ -66,7 +66,7 @@ func main() {
 	fmt.Println("response ", res)
 ```
 
-## GetData
+## Get Data by Specific Period and Number [TR-7wb/nw/wf, TR4]
 
 ```golang
 	client, err := ondotori.New("API Token here", "rbxx1234", "password")
@@ -80,6 +80,26 @@ func main() {
 	}
 
 	res, err := client.GetData(cp, context.TODO())
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	// res will be DeviceData
+	fmt.Println("response ", res)
+```
+
+## RTR500BW
+
+### Get Latest Data (300 most recent readings) [RTR500BW]
+
+```golang
+	cp := ondotori.GetLatestDataRTR500Param{
+		RemoteSerial: "remote unit serial here",
+		BaseSerial:   "base unit serial here",
+	}
+
+	res, err := client.GetLatestDataRTR500(cp, context.TODO())
 	if err != nil {
 		fmt.Println(err.Error())
 		return
