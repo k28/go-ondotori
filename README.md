@@ -113,8 +113,8 @@ func main() {
 
 ```golang
 	cp := ondotori.GetDataRTR500Param{
-		RemoteSerial: "52800010",
-		BaseSerial:   "5858001E",
+		RemoteSerial: "remote unit serial here",
+		BaseSerial:   "base unit serial here",
 		From:         &from,
 		To:           &now,
 		Number:       &limit,
